@@ -2,3 +2,7 @@ https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1p_sd
   out=../extensions/controlnet/models/control_v11f1p_sd15_depth.pth
 https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny.pth
   out=../extensions/controlnet/models/control_v11p_sd15_canny.pth
+
+
+https://dl.fbaipublicfiles.com/segment_anything/sam_vit_l_0b3195.pth
+  out=sam/sam_vit_l_0b3195.pth
