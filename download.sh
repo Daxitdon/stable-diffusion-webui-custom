@@ -24,6 +24,9 @@ git clone https://github.com/deforum-art/sd-webui-deforum.git ./extensions/defor
 git clone https://github.com/fkunn1326/openpose-editor.git ./extensions/openpose-editor
 git clone https://github.com/continue-revolution/sd-webui-segment-anything.git ./extensions/segment-anything
 
+aria2c -x 10 --disable-ipv6 --input-file ./exten.txt --dir ./models --continue
+
+
 #https://civitai.com/api/download/models/88158
 #  out=Stable-diffusion/rundiffusionFX_v10.safetensors
 #https://civitai.com/api/download/models/88167
