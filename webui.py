@@ -400,8 +400,8 @@ def webui():
 
         app, local_url, share_url = shared.demo.launch(
             share=cmd_opts.share,
-            server_name=server_name,
-            server_port=cmd_opts.port,
+            server_name="0.0.0.0",
+            server_port=8080,
             ssl_keyfile=cmd_opts.tls_keyfile,
             ssl_certfile=cmd_opts.tls_certfile,
             ssl_verify=cmd_opts.disable_tls_verify,
