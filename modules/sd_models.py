@@ -188,8 +188,8 @@ def select_checkpoint():
 
     name = f"{model_path}/{model_checkpoint}"
 
-    # if not os.path.exists(name):
-    #     modelloader.load_file_from_url(url=_provided_checkpoints.get(model_checkpoint), model_dir=model_path,file_name=model_checkpoint)
+    if not os.path.exists(name):
+        modelloader.load_file_from_url(url=model_url, model_dir=model_path,file_name=model_checkpoint)
 
 
     model_list = modelloader.load_models(model_path=model_path, model_url=model_url, command_path=shared.cmd_opts.ckpt_dir, ext_filter=[".ckpt", ".safetensors"], ext_blacklist=[".vae.ckpt", ".vae.safetensors"])
