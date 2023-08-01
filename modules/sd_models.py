@@ -3,7 +3,7 @@ import os.path
 import sys
 import gc
 import threading
-
+import requests
 import torch
 import re
 import safetensors.torch
@@ -112,28 +112,29 @@ def checkpoint_tiles():
 
 
 def list_models():
-    checkpoints_list.clear()
-    checkpoint_aliases.clear()
-
-    cmd_ckpt = shared.cmd_opts.ckpt
-    if shared.cmd_opts.no_download_sd_model or cmd_ckpt != shared.sd_model_file or os.path.exists(cmd_ckpt):
-        model_url = None
-    else:
-        model_url = "https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors"
-
-    model_list = modelloader.load_models(model_path=model_path, model_url=model_url, command_path=shared.cmd_opts.ckpt_dir, ext_filter=[".ckpt", ".safetensors"], download_name="v1-5-pruned-emaonly.safetensors", ext_blacklist=[".vae.ckpt", ".vae.safetensors"])
-
-    if os.path.exists(cmd_ckpt):
-        checkpoint_info = CheckpointInfo(cmd_ckpt)
-        checkpoint_info.register()
-
-        shared.opts.data['sd_model_checkpoint'] = checkpoint_info.title
-    elif cmd_ckpt is not None and cmd_ckpt != shared.default_sd_model_file:
-        print(f"Checkpoint in --ckpt argument not found (Possible it was moved to {model_path}: {cmd_ckpt}", file=sys.stderr)
-
-    for filename in sorted(model_list, key=str.lower):
-        checkpoint_info = CheckpointInfo(filename)
-        checkpoint_info.register()
+    pass
+    # checkpoints_list.clear()
+    # checkpoint_aliases.clear()
+    #
+    # cmd_ckpt = shared.cmd_opts.ckpt
+    # if shared.cmd_opts.no_download_sd_model or cmd_ckpt != shared.sd_model_file or os.path.exists(cmd_ckpt):
+    #     model_url = None
+    # else:
+    #     model_url = "https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors"
+    #
+    # model_list = modelloader.load_models(model_path=model_path, model_url=model_url, command_path=shared.cmd_opts.ckpt_dir, ext_filter=[".ckpt", ".safetensors"], download_name="v1-5-pruned-emaonly.safetensors", ext_blacklist=[".vae.ckpt", ".vae.safetensors"])
+    #
+    # if os.path.exists(cmd_ckpt):
+    #     checkpoint_info = CheckpointInfo(cmd_ckpt)
+    #     checkpoint_info.register()
+    #
+    #     shared.opts.data['sd_model_checkpoint'] = checkpoint_info.title
+    # elif cmd_ckpt is not None and cmd_ckpt != shared.default_sd_model_file:
+    #     print(f"Checkpoint in --ckpt argument not found (Possible it was moved to {model_path}: {cmd_ckpt}", file=sys.stderr)
+    #
+    # for filename in sorted(model_list, key=str.lower):
+    #     checkpoint_info = CheckpointInfo(filename)
+    #     checkpoint_info.register()
 
 
 def get_closet_checkpoint_match(search_string):
@@ -162,29 +163,59 @@ def model_hash(filename):
     except FileNotFoundError:
         return 'NOFILE'
 
+_provided_checkpoints = {
+    'allInOnePixelModel_v1.ckpt': 'https://civitai.com/api/download/models/41',
+    'anythingV3_fp16.ckpt': 'https://civitai.com/api/download/models/75',
+    'openjourneyAkaMidJou_v4.ckpt': 'https://civitai.com/api/download/models/27392'
+}
+
+def download_file(name):
+
+    url = _provided_checkpoints.get(name)
+    response = requests.get(url, stream=True)
+    with open(f"{model_path}/{name}", 'wb') as out_file:
+        out_file.write(response.content)
+    print(f'Downloaded file {model_path}/{name}')
 
 def select_checkpoint():
+
     """Raises `FileNotFoundError` if no checkpoints are found."""
+    global checkpoint_info
     model_checkpoint = shared.opts.sd_model_checkpoint
+    model_url = None
 
-    checkpoint_info = checkpoint_aliases.get(model_checkpoint, None)
-    if checkpoint_info is not None:
-        return checkpoint_info
+    name = f"{model_path}/{model_checkpoint}"
 
-    if len(checkpoints_list) == 0:
-        error_message = "No checkpoints found. When searching for checkpoints, looked at:"
-        if shared.cmd_opts.ckpt is not None:
-            error_message += f"\n - file {os.path.abspath(shared.cmd_opts.ckpt)}"
-        error_message += f"\n - directory {model_path}"
-        if shared.cmd_opts.ckpt_dir is not None:
-            error_message += f"\n - directory {os.path.abspath(shared.cmd_opts.ckpt_dir)}"
-        error_message += "Can't run without a checkpoint. Find and place a .ckpt or .safetensors file into any of those locations."
-        raise FileNotFoundError(error_message)
+    if not os.path.exists(name):
+        download_file(model_checkpoint)
 
-    checkpoint_info = next(iter(checkpoints_list.values()))
-    if model_checkpoint is not None:
-        print(f"Checkpoint {model_checkpoint} not found; loading fallback {checkpoint_info.title}", file=sys.stderr)
 
+    model_list = modelloader.load_models(model_path=model_path, model_url=model_url, command_path=shared.cmd_opts.ckpt_dir, ext_filter=[".ckpt", ".safetensors"], ext_blacklist=[".vae.ckpt", ".vae.safetensors"])
+    print(model_list)
+    for filename in sorted(model_list, key=str.lower):
+        checkpoint_info = CheckpointInfo(filename)
+        checkpoint_info.register()
+    #
+    # checkpoint_info = checkpoint_aliases.get(model_checkpoint, None)
+    # if checkpoint_info is not None:
+    #     return checkpoint_info
+    #
+    # if len(checkpoints_list) == 0:
+    #     error_message = "No checkpoints found. When searching for checkpoints, looked at:"
+    #     if shared.cmd_opts.ckpt is not None:
+    #         error_message += f"\n - file {os.path.abspath(shared.cmd_opts.ckpt)}"
+    #     error_message += f"\n - directory {model_path}"
+    #     if shared.cmd_opts.ckpt_dir is not None:
+    #         error_message += f"\n - directory {os.path.abspath(shared.cmd_opts.ckpt_dir)}"
+    #     error_message += "Can't run without a checkpoint. Find and place a .ckpt or .safetensors file into any of those locations."
+    #     raise FileNotFoundError(error_message)
+    #
+    # checkpoint_info = next(iter(checkpoints_list.values()))
+    # if model_checkpoint is not None:
+    #     print(f"Checkpoint {model_checkpoint} not found; loading fallback {checkpoint_info.title}", file=sys.stderr)
+    #
+    # print(f"Loading checkpoint {checkpoint_info}")
+    #
     return checkpoint_info
 
 
