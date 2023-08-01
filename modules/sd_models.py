@@ -171,13 +171,13 @@ _provided_checkpoints = {
     'meinamix_meinaV11.safetensors': 'https://civitai.com/api/download/models/119057',
 }
 
-def download_file(name):
-
-    url = _provided_checkpoints.get(name)
-    response = requests.get(url, stream=True)
-    with open(f"{model_path}/{name}", 'wb') as out_file:
-        out_file.write(response.content)
-    print(f'Downloaded file {model_path}/{name}')
+# def download_file(name):
+#
+#     url = _provided_checkpoints.get(name)
+#     response = requests.get(url, stream=True)
+#     with open(f"{model_path}/{name}", 'wb') as out_file:
+#         out_file.write(response.content)
+#     print(f'Downloaded file {model_path}/{name}')
 
 def select_checkpoint():
 
@@ -189,7 +189,7 @@ def select_checkpoint():
     name = f"{model_path}/{model_checkpoint}"
 
     if not os.path.exists(name):
-        download_file(model_checkpoint)
+        modelloader.load_file_from_url(url=_provided_checkpoints.get(model_checkpoint), model_dir=model_path)
 
 
     model_list = modelloader.load_models(model_path=model_path, model_url=model_url, command_path=shared.cmd_opts.ckpt_dir, ext_filter=[".ckpt", ".safetensors"], ext_blacklist=[".vae.ckpt", ".vae.safetensors"])
