@@ -410,11 +410,11 @@ options_templates.update(options_section(('training', "Training"), {
 }))
 
 _provided_checkpoints = {
+    'v1-5-pruned-emaonly.safetensors':'https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors',
     'allInOnePixelModel_v1.ckpt': 'https://civitai.com/api/download/models/41',
     'anythingV3_fp16.ckpt': 'https://civitai.com/api/download/models/75',
     'openjourneyAkaMidJou_v4.ckpt': 'https://civitai.com/api/download/models/27392',
     'meinamix_meinaV11.safetensors': 'https://civitai.com/api/download/models/119057',
-    'vrPorn_v30.safetensors':   'https://civitai.com/api/download/models/72607'
 }
 
 options_templates.update(options_section(('sd', "Stable Diffusion"), {

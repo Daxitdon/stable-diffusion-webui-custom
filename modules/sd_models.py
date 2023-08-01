@@ -113,16 +113,16 @@ def checkpoint_tiles():
 
 def list_models():
     pass
-    # checkpoints_list.clear()
-    # checkpoint_aliases.clear()
-    #
-    # cmd_ckpt = shared.cmd_opts.ckpt
-    # if shared.cmd_opts.no_download_sd_model or cmd_ckpt != shared.sd_model_file or os.path.exists(cmd_ckpt):
-    #     model_url = None
-    # else:
-    #     model_url = "https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors"
-    #
-    # model_list = modelloader.load_models(model_path=model_path, model_url=model_url, command_path=shared.cmd_opts.ckpt_dir, ext_filter=[".ckpt", ".safetensors"], download_name="v1-5-pruned-emaonly.safetensors", ext_blacklist=[".vae.ckpt", ".vae.safetensors"])
+    checkpoints_list.clear()
+    checkpoint_aliases.clear()
+
+    cmd_ckpt = shared.cmd_opts.ckpt
+    if shared.cmd_opts.no_download_sd_model or cmd_ckpt != shared.sd_model_file or os.path.exists(cmd_ckpt):
+        model_url = None
+    else:
+        model_url = "https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors"
+
+    model_list = modelloader.load_models(model_path=model_path, model_url=model_url, command_path=shared.cmd_opts.ckpt_dir, ext_filter=[".ckpt", ".safetensors"], download_name="v1-5-pruned-emaonly.safetensors", ext_blacklist=[".vae.ckpt", ".vae.safetensors"])
     #
     # if os.path.exists(cmd_ckpt):
     #     checkpoint_info = CheckpointInfo(cmd_ckpt)
@@ -164,11 +164,11 @@ def model_hash(filename):
         return 'NOFILE'
 
 _provided_checkpoints = {
+    'v1-5-pruned-emaonly.safetensors':'https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors',
     'allInOnePixelModel_v1.ckpt': 'https://civitai.com/api/download/models/41',
     'anythingV3_fp16.ckpt': 'https://civitai.com/api/download/models/75',
     'openjourneyAkaMidJou_v4.ckpt': 'https://civitai.com/api/download/models/27392',
     'meinamix_meinaV11.safetensors': 'https://civitai.com/api/download/models/119057',
-    'vrPorn_v30.safetensors':   'https://civitai.com/api/download/models/72607'
 }
 
 def download_file(name):
