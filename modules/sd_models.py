@@ -195,9 +195,9 @@ def select_checkpoint():
     model_list = modelloader.load_models(model_path=model_path, model_url=model_url, command_path=shared.cmd_opts.ckpt_dir, ext_filter=[".ckpt", ".safetensors"], ext_blacklist=[".vae.ckpt", ".vae.safetensors"])
     print(model_list)
     for filename in sorted(model_list, key=str.lower):
-        print("filename",filename)
-        checkpoint_info = CheckpointInfo(filename)
-        checkpoint_info.register()
+        if filename == name:
+            checkpoint_info = CheckpointInfo(filename)
+            checkpoint_info.register()
     #
     # checkpoint_info = checkpoint_aliases.get(model_checkpoint, None)
     # if checkpoint_info is not None:
