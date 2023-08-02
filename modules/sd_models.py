@@ -198,7 +198,7 @@ def select_checkpoint():
 
     model_checkpoint = shared.opts.sd_model_checkpoint
     print(f"model_checkpoint: {model_checkpoint}")
-    if model_checkpoint not in list(_provided_checkpoints.keys()) and not None:
+    if model_checkpoint not in list(_provided_checkpoints.keys()) and model_checkpoint is not None:
         checkpoint_info = checkpoint_aliases.get(model_checkpoint, None)
         print("checkpoint info not in list", checkpoint_info)
         if checkpoint_info is not None:
