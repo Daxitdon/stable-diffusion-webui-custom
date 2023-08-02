@@ -185,6 +185,7 @@ def select_checkpoint():
     print("inside select checkpoint")
 
     model_checkpoint = shared.opts.sd_model_checkpoint
+    print(f"model_checkpoint: {model_checkpoint}")
     model_url = _provided_checkpoints.get(model_checkpoint)
 
     name = f"{model_path}/{model_checkpoint}"
