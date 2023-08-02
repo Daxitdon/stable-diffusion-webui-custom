@@ -197,6 +197,7 @@ def select_checkpoint():
     print("inside select checkpoint")
 
     model_checkpoint = shared.opts.sd_model_checkpoint
+    print(f"model_checkpoint: {model_checkpoint}")
     if model_checkpoint not in list(_provided_checkpoints.keys()) and not None:
         checkpoint_info = checkpoint_aliases.get(model_checkpoint, None)
         print("checkpoint info not in list", checkpoint_info)
@@ -208,7 +209,7 @@ def select_checkpoint():
         return checkpoint_info
     else:
 
-        print(f"model_checkpoint: {model_checkpoint}")
+
         model_url = _provided_checkpoints.get(model_checkpoint)
 
         name = f"{model_path}/{model_checkpoint}"
