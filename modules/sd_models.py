@@ -180,9 +180,10 @@ _provided_checkpoints = {
 #     print(f'Downloaded file {model_path}/{name}')
 
 def select_checkpoint():
-
     """Raises `FileNotFoundError` if no checkpoints are found."""
     global checkpoint_info
+    print("inside select checkpoint")
+
     model_checkpoint = shared.opts.sd_model_checkpoint
     model_url = _provided_checkpoints.get(model_checkpoint)
 
@@ -195,7 +196,10 @@ def select_checkpoint():
     model_list = modelloader.load_models(model_path=model_path, model_url=model_url, command_path=shared.cmd_opts.ckpt_dir, ext_filter=[".ckpt", ".safetensors"], ext_blacklist=[".vae.ckpt", ".vae.safetensors"])
     print(model_list)
     for filename in sorted(model_list, key=str.lower):
+        print("filename",filename)
+        print("name", name)
         if filename == name:
+            print("Filename == name")
             checkpoint_info = CheckpointInfo(filename)
             checkpoint_info.register()
     #
