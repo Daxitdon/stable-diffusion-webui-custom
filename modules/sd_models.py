@@ -224,15 +224,17 @@ def select_checkpoint():
             modelloader.load_file_from_url(url=model_url, model_dir=model_path, file_name=model_checkpoint)
             is_downloading = False
 
-        model_list = modelloader.load_models(model_path=model_path, model_url=model_url,
-                                             command_path=shared.cmd_opts.ckpt_dir, ext_filter=[".ckpt", ".safetensors"],
-                                             ext_blacklist=[".vae.ckpt", ".vae.safetensors"])
-        print(model_list)
+
 
         checkpoint_info = checkpoint_aliases.get(model_checkpoint, None)
         if checkpoint_info is not None:
             return checkpoint_info
         else:
+            model_list = modelloader.load_models(model_path=model_path, model_url=model_url,
+                                                 command_path=shared.cmd_opts.ckpt_dir,
+                                                 ext_filter=[".ckpt", ".safetensors"],
+                                                 ext_blacklist=[".vae.ckpt", ".vae.safetensors"])
+            print(model_list)
             checkpoint_info = CheckpointInfo(name)
             checkpoint_info.register()
             return checkpoint_info
