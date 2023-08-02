@@ -26,13 +26,16 @@ start = launch_utils.start
 
 
 def main():
-    if not args.skip_prepare_environment:
-        prepare_environment()
+    try:
+        if not args.skip_prepare_environment:
+            prepare_environment()
 
-    if args.test_server:
-        configure_for_tests()
+        if args.test_server:
+            configure_for_tests()
 
-    start()
+        start()
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 
 if __name__ == "__main__":
