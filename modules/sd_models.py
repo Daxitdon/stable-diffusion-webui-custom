@@ -197,7 +197,7 @@ def select_checkpoint():
     print(model_list)
 
     checkpoint_info = CheckpointInfo(name)
-
+    checkpoint_info.register()
     #
     # checkpoint_info = checkpoint_aliases.get(model_checkpoint, None)
     # if checkpoint_info is not None:
