@@ -115,6 +115,7 @@ def checkpoint_tiles():
 
 def list_models():
     pass
+    print("list model run")
     checkpoints_list.clear()
     checkpoint_aliases.clear()
 
@@ -188,37 +189,45 @@ _provided_checkpoints = {
 #     print(f'Downloaded file {model_path}/{name}')
 
 def select_checkpoint():
+
+    print(f"Available checkpoints: {', '.join(checkpoints_list.keys())}", file=sys.stderr)
+
     """Raises `FileNotFoundError` if no checkpoints are found."""
     global checkpoint_info
     print("inside select checkpoint")
 
     model_checkpoint = shared.opts.sd_model_checkpoint
-    if model_checkpoint not in list(_provided_checkpoints.keys()):
+    if model_checkpoint not in list(_provided_checkpoints.keys()) and not None:
         checkpoint_info = checkpoint_aliases.get(model_checkpoint, None)
         print("checkpoint info not in list", checkpoint_info)
         if checkpoint_info is not None:
             return checkpoint_info
-
-    print(f"model_checkpoint: {model_checkpoint}")
-    model_url = _provided_checkpoints.get(model_checkpoint)
-
-    name = f"{model_path}/{model_checkpoint}"
-
-    if not os.path.exists(name):
-        modelloader.load_file_from_url(url=model_url, model_dir=model_path, file_name=model_checkpoint)
-
-    model_list = modelloader.load_models(model_path=model_path, model_url=model_url,
-                                         command_path=shared.cmd_opts.ckpt_dir, ext_filter=[".ckpt", ".safetensors"],
-                                         ext_blacklist=[".vae.ckpt", ".vae.safetensors"])
-    print(model_list)
-
-    checkpoint_info = checkpoint_aliases.get(model_checkpoint, None)
-    if checkpoint_info is not None:
+    elif model_checkpoint is None:
+        print("model checkpoint is none")
+        checkpoint_info = next(iter(checkpoints_list.values()))
         return checkpoint_info
     else:
-        checkpoint_info = CheckpointInfo(name)
-        checkpoint_info.register()
-        return checkpoint_info
+
+        print(f"model_checkpoint: {model_checkpoint}")
+        model_url = _provided_checkpoints.get(model_checkpoint)
+
+        name = f"{model_path}/{model_checkpoint}"
+
+        if not os.path.exists(name):
+            modelloader.load_file_from_url(url=model_url, model_dir=model_path, file_name=model_checkpoint)
+
+        model_list = modelloader.load_models(model_path=model_path, model_url=model_url,
+                                             command_path=shared.cmd_opts.ckpt_dir, ext_filter=[".ckpt", ".safetensors"],
+                                             ext_blacklist=[".vae.ckpt", ".vae.safetensors"])
+        print(model_list)
+
+        checkpoint_info = checkpoint_aliases.get(model_checkpoint, None)
+        if checkpoint_info is not None:
+            return checkpoint_info
+        else:
+            checkpoint_info = CheckpointInfo(name)
+            checkpoint_info.register()
+            return checkpoint_info
 
 
     #
