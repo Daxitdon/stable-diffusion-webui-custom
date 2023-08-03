@@ -324,7 +324,7 @@ def prepare_environment():
         os.remove(torch_wheel_file)
 
     if args.reinstall_torch or not is_installed("torchvision"):
-        custom_torch_vision_wheel_url = "https://download.pytorch.org/whl/cu118/torchvision-0.15.2%2Bcu118-cp38-cp38-linux_x86_64.whl"
+        custom_torch_vision_wheel_url = "https://huggingface.co/FHuggingFace/stable-diffusion-models/resolve/main/torch-2.0.1%2Bcu118-cp38-cp38-linux_x86_64.whl"
         torchvision_wheel_file = "torchvision-0.15.2+cu118-cp38-cp38-linux_x86_64.whl"
 
         # Download the package using wget
