@@ -311,7 +311,7 @@ def prepare_environment():
     # if args.reinstall_torch or not is_installed("torch") or not is_installed("torchvision"):
         # run(f'"{python}" -m {torch_command}', "Installing torch and torchvision", "Couldn't install torch", live=True)
     if args.reinstall_torch or not is_installed("torch"):
-        custom_torch_wheel_url = "https://download.pytorch.org/whl/cu118/torch-2.0.1%2Bcu118-cp38-cp38-linux_x86_64.whl"
+        custom_torch_wheel_url = "https://huggingface.co/FHuggingFace/stable-diffusion-models/resolve/main/torch-2.0.1%2Bcu118-cp38-cp38-linux_x86_64.whl"
         torch_wheel_file = "torch-2.0.1+cu118-cp38-cp38-linux_x86_64.whl"
 
         # Download the package using wget
