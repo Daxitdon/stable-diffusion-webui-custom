@@ -410,11 +410,11 @@ options_templates.update(options_section(('training', "Training"), {
 }))
 
 _provided_checkpoints = {
-    'v1-5-pruned-emaonly.safetensors':'https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors',
-    'allInOnePixelModel_v1.ckpt': 'https://civitai.com/api/download/models/41',
-    'anythingV3_fp16.ckpt': 'https://civitai.com/api/download/models/75',
-    'openjourneyAkaMidJou_v4.ckpt': 'https://civitai.com/api/download/models/27392',
-    'meinamix_meinaV11.safetensors': 'https://civitai.com/api/download/models/119057',
+    'A-Zovya Photoreal v2.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/A-Zovya%20Photoreal%20v2.safetensors',
+    'AbsoluteReality v1.6.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/AbsoluteReality%20v1.6.safetensors',
+    'AbyssOrangeMix3.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/AbyssOrangeMix3.safetensors',
+    'AnyHentai v2.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/AnyHentai%20v2.safetensors',
+    'AnyLoRA.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/AnyLoRA.safetensors',
 }
 
 options_templates.update(options_section(('sd', "Stable Diffusion"), {

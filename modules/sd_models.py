@@ -128,11 +128,11 @@ def list_models():
         if shared.cmd_opts.no_download_sd_model or cmd_ckpt != shared.sd_model_file or os.path.exists(cmd_ckpt):
             model_url = None
         else:
-            model_url = "https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors"
+            model_url = "https://huggingface.co/romisyed/sd/resolve/main/A-Zovya%20Photoreal%20v2.safetensors"
 
         model_list = modelloader.load_models(model_path=model_path, model_url=model_url,
                                              command_path=shared.cmd_opts.ckpt_dir, ext_filter=[".ckpt", ".safetensors"],
-                                             download_name="v1-5-pruned-emaonly.safetensors",
+                                             download_name="A-Zovya Photoreal v2.safetensors",
                                              ext_blacklist=[".vae.ckpt", ".vae.safetensors"])
         #
         # if os.path.exists(cmd_ckpt):
@@ -177,11 +177,11 @@ def model_hash(filename):
 
 
 _provided_checkpoints = {
-    'v1-5-pruned-emaonly.safetensors': 'https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors',
-    'allInOnePixelModel_v1.ckpt': 'https://civitai.com/api/download/models/41',
-    'anythingV3_fp16.ckpt': 'https://civitai.com/api/download/models/75',
-    'openjourneyAkaMidJou_v4.ckpt': 'https://civitai.com/api/download/models/27392',
-    'meinamix_meinaV11.safetensors': 'https://civitai.com/api/download/models/119057',
+    'A-Zovya Photoreal v2.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/A-Zovya%20Photoreal%20v2.safetensors',
+    'AbsoluteReality v1.6.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/AbsoluteReality%20v1.6.safetensors',
+    'AbyssOrangeMix3.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/AbyssOrangeMix3.safetensors',
+    'AnyHentai v2.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/AnyHentai%20v2.safetensors',
+    'AnyLoRA.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/AnyLoRA.safetensors',
 }
 
 
