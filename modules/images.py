@@ -510,7 +510,7 @@ def save_image_with_geninfo(image, geninfo, filename, extension=None, existing_p
     For PNG images, geninfo is added to existing pnginfo dictionary using the pnginfo_section_name argument as key.
     For JPG images, there's no dictionary and geninfo just replaces the EXIF description.
     """
-    print(f"Saving image with geninfo to {filename}")
+    print(f"Saving image with geninfo to {filename} with extension {extension}")
     if extension is None:
         extension = os.path.splitext(filename)[1]
 
@@ -595,7 +595,9 @@ def save_image(image, path, basename, seed=None, prompt=None, extension='png', i
         path = os.path.join(path, dirname)
 
     os.makedirs(path, exist_ok=True)
-
+    print("force filename", forced_filename)
+    print("save to dires", save_to_dirs)
+    print("path", path)
     if forced_filename is None:
         if short_filename or seed is None:
             file_decoration = ""
