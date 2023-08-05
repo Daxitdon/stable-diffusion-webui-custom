@@ -323,7 +323,7 @@ def prepare_environment():
         dest = f"~/Downloads/{torch_wheel_file}"  # Change this to your preferred directory
 
         # Create a SmartDL object
-        obj = SmartDL(custom_torch_wheel_url, dest,threads=50)
+        obj = SmartDL(custom_torch_wheel_url, dest,threads=20)
         obj.start()
 
         # Get the actual path of the downloaded file
