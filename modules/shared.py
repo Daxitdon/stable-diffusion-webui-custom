@@ -35,6 +35,7 @@ if os.environ.get('IGNORE_CMD_ARGS_ERRORS', None) is None:
 else:
     cmd_opts, _ = parser.parse_known_args()
 
+print("cmd_opts.unique_id",cmd_opts.unique_id)
 
 restricted_opts = {
     "samples_filename_pattern",
