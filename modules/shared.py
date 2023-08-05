@@ -36,6 +36,7 @@ else:
     cmd_opts, _ = parser.parse_known_args()
 
 if cmd_opts.unique_id is not None:
+    print(f"Unique ID: {cmd_opts.unique_id}")
     os.environ['UNIQUE_ID'] = cmd_opts.unique_id
 
 
