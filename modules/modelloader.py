@@ -29,7 +29,7 @@ def load_file_from_url(
     cached_file = os.path.abspath(os.path.join(model_dir, file_name))
     if not os.path.exists(cached_file):
         print(f'Downloading: "{url}" to {cached_file}\n')
-        obj = SmartDL(url, cached_file, progress_bar=progress,threads=50)
+        obj = SmartDL(url, cached_file, progress_bar=progress,threads=20)
         obj.start()
 
         # Get the actual path of the downloaded file
