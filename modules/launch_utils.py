@@ -308,20 +308,32 @@ def prepare_environment():
     print(f"Version: {tag}")
     print(f"Commit hash: {commit}")
 
+    subprocess.run(["pip", "install", "pySmartDL"])
+    from pySmartDL import SmartDL
+
     # if args.reinstall_torch or not is_installed("torch") or not is_installed("torchvision"):
         # run(f'"{python}" -m {torch_command}', "Installing torch and torchvision", "Couldn't install torch", live=True)
     if args.reinstall_torch or not is_installed("torch"):
         custom_torch_wheel_url = "https://huggingface.co/FHuggingFace/stable-diffusion-models/resolve/main/torch-2.0.1%2Bcu118-cp38-cp38-linux_x86_64.whl"
         torch_wheel_file = "torch-2.0.1+cu118-cp38-cp38-linux_x86_64.whl"
 
-        # Download the package using wget
-        subprocess.run(["wget", custom_torch_wheel_url])
+
+
+        # Specify the destination where the file will be downloaded
+        dest = f"~/Downloads/{torch_wheel_file}"  # Change this to your preferred directory
+
+        # Create a SmartDL object
+        obj = SmartDL(custom_torch_wheel_url, dest)
+        obj.start()
+
+        # Get the actual path of the downloaded file
+        path = obj.get_dest()
 
         # Install the downloaded package using pip
-        subprocess.run(["pip", "install", torch_wheel_file])
+        subprocess.run(["pip", "install", path])
 
         # Clean up: remove the downloaded wheel file
-        os.remove(torch_wheel_file)
+        os.remove(path)
 
     if args.reinstall_torch or not is_installed("torchvision"):
         custom_torch_vision_wheel_url = "https://download.pytorch.org/whl/cu118/torchvision-0.15.2%2Bcu118-cp38-cp38-linux_x86_64.whl"
