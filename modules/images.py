@@ -511,6 +511,9 @@ def save_image_with_geninfo(image, geninfo, filename, extension=None, existing_p
     For JPG images, there's no dictionary and geninfo just replaces the EXIF description.
     """
     print(f"Saving image with geninfo to {filename} with extension {extension}")
+    print(f"Geninfo: {geninfo}")
+    print(f"Existing PNG info: {existing_pnginfo}")
+    print("image", image)
     if extension is None:
         extension = os.path.splitext(filename)[1]
 
