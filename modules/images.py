@@ -514,6 +514,7 @@ def save_image_with_geninfo(image, geninfo, filename, extension=None, existing_p
     print(f"Geninfo: {geninfo}")
     print(f"Existing PNG info: {existing_pnginfo}")
     print("image", image)
+    print("Unique_ID", os.getenv('UNIQUE_ID'))
     if extension is None:
         extension = os.path.splitext(filename)[1]
 
