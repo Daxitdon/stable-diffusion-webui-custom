@@ -8,8 +8,7 @@ from urllib.parse import urlparse
 from modules import shared
 from modules.upscaler import Upscaler, UpscalerLanczos, UpscalerNearest, UpscalerNone
 from modules.paths import script_path, models_path
-from pySmartDL import SmartDL
-
+import subprocess
 
 def load_file_from_url(
     url: str,
@@ -29,11 +28,13 @@ def load_file_from_url(
     cached_file = os.path.abspath(os.path.join(model_dir, file_name))
     if not os.path.exists(cached_file):
         print(f'Downloading: "{url}" to {cached_file}\n')
-        obj = SmartDL(url, cached_file, progress_bar=progress,threads=20)
-        obj.start()
-
-        # Get the actual path of the downloaded file
-        cached_file = obj.get_dest()
+        subprocess.run([
+            'aria2c',
+            '-x', '16',
+            '-d', model_dir,
+            '-o', file_name,
+            url
+        ])
     return cached_file
 
 
