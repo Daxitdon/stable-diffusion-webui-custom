@@ -399,7 +399,7 @@ def webui():
         gradio_auth_creds = list(get_gradio_auth_creds()) or None
 
         app, local_url, share_url = shared.demo.launch(
-            share=True,
+            share=False,
             server_name="0.0.0.0",
             server_port=8080,
             ssl_keyfile=cmd_opts.tls_keyfile,
