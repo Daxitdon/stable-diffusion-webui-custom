@@ -286,8 +286,11 @@ def select_checkpoint():
                                                  ext_filter=[".ckpt", ".safetensors"],
                                                  ext_blacklist=[".vae.ckpt", ".vae.safetensors"])
             print(model_list)
-            checkpoint_info = CheckpointInfo(name)
-            checkpoint_info.register()
+            checkpoints_list.clear()
+            checkpoint_aliases.clear()
+            for filename in sorted(model_list, key=str.lower):
+                checkpoint_info = CheckpointInfo(filename)
+                checkpoint_info.register()
             return checkpoint_info
 
 
