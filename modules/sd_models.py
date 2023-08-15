@@ -11,7 +11,7 @@ from omegaconf import OmegaConf
 from os import mkdir
 from urllib import request
 import ldm.modules.midas as midas
-from checkpoint_list import _provided_checkpoints
+from .checkpoint_list import _provided_checkpoints
 from ldm.util import instantiate_from_config
 
 from modules import paths, shared, modelloader, devices, script_callbacks, sd_vae, sd_disable_initialization, errors, \

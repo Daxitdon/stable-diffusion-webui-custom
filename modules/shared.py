@@ -10,7 +10,7 @@ import logging
 import gradio as gr
 import torch
 import tqdm
-from checkpoint_list import _provided_checkpoints
+from .checkpoint_list import _provided_checkpoints
 
 import launch
 import modules.interrogate
