@@ -35,6 +35,10 @@ def load_file_from_url(
             '-o', file_name,
             url
         ])
+        # After downloading the file, delete other models in the directory
+        for file in os.listdir(model_dir):
+            if file != file_name and file != "AnyLoRA.safetensors":
+                os.remove(os.path.join(model_dir, file))
     return cached_file
 
 
