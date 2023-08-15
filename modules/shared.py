@@ -39,12 +39,12 @@ else:
 if cmd_opts.unique_id is not None:
     print(f"Unique ID: {cmd_opts.unique_id}")
     os.environ['UNIQUE_ID'] = cmd_opts.unique_id
-
+print(cmd_opts.exclude)
 if cmd_opts.exclude is not None:
-    print("EXCLUDE true")
+    print("exclude true")
     os.environ['EXCLUDE'] = "true"
 else:
-    print("EXCLUDE false")
+    print("exclude false")
 
     os.environ['EXCLUDE'] = "false"
 
