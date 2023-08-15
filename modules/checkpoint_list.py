@@ -1,4 +1,7 @@
 import os
+from modules import cmd_args
+parser = cmd_args.parser
+cmd_opts = parser.parse_args()
 
 fast_models = {
     'A-Zovya Photoreal v2.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/A-Zovya%20Photoreal%20v2.safetensors',
@@ -113,4 +116,4 @@ other_models = {
 
 }
 
-_provided_checkpoints = fast_models if os.environ['EXCLUDE'] == 'true' else other_models
+_provided_checkpoints = fast_models if cmd_opts.exclude is not None else other_models
