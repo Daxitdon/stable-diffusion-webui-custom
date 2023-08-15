@@ -289,8 +289,11 @@ def select_checkpoint():
             checkpoints_list.clear()
             checkpoint_aliases.clear()
             for filename in sorted(model_list, key=str.lower):
-                checkpoint_info = CheckpointInfo(filename)
-                checkpoint_info.register()
+                if filename != name:
+                    checkpoint_info = CheckpointInfo(filename)
+                    checkpoint_info.register()
+            checkpoint_info = CheckpointInfo(name)
+            checkpoint_info.register()
             return checkpoint_info
 
 
