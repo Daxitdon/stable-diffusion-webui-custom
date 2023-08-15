@@ -10,6 +10,7 @@ import logging
 import gradio as gr
 import torch
 import tqdm
+from checkpoint_list import _provided_checkpoints
 
 import launch
 import modules.interrogate
@@ -38,6 +39,13 @@ else:
 if cmd_opts.unique_id is not None:
     print(f"Unique ID: {cmd_opts.unique_id}")
     os.environ['UNIQUE_ID'] = cmd_opts.unique_id
+    if cmd_opts.exclude is not None:
+        print("EXCLUDE true")
+        os.environ['EXCLUDE'] = "true"
+    else:
+        print("EXCLUDE false")
+
+        os.environ['EXCLUDE'] = "false"
 
 
 
@@ -415,64 +423,6 @@ options_templates.update(options_section(('training', "Training"), {
     "training_tensorboard_flush_every": OptionInfo(120, "How often, in seconds, to flush the pending tensorboard events and summaries to disk."),
 }))
 
-_provided_checkpoints = {
-    'A-Zovya Photoreal v2.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/A-Zovya%20Photoreal%20v2.safetensors',
-    'AbsoluteReality v1.6.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/AbsoluteReality%20v1.6.safetensors',
-    'AbyssOrangeMix3.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/AbyssOrangeMix3.safetensors',
-    'AnyHentai v2.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/AnyHentai%20v2.safetensors',
-    'AnyLoRA.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/AnyLoRA.safetensors',
-    'Anything v5.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Anything%20v5.safetensors',
-    'Babes 2.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Babes%202.safetensors',
-    'Beautiful Realistic Asians v6.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Beautiful%20Realistic%20Asians%20v6.safetensors',
-    'CetusMix Whalefall 2.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/CetusMix%20Whalefall%202.safetensors',
-    'Cheese Daddy Landscapes Mix v4.1.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Cheese%20Daddy%20Landscapes%20Mix%20v4.1.safetensors',
-    'ChikMix v3.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Cheese%20Daddy%20Landscapes%20Mix%20v4.1.safetensors',
-    'ChilloutMix.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/ChilloutMix.safetensors',
-    'Clarity 2.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Clarity%202.safetensors',
-    'Colorful v3.1.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Colorful%20v3.1.safetensors',
-    'Counterfeit v3.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Counterfeit%20v3.safetensors',
-    'CyberRealistic v3.2.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/CyberRealistic%20v3.2.safetensors',
-    'Dark Sushi Mix.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Dark%20Sushi%20Mix.safetensors',
-    'Deliberate v2.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Deliberate%20v2.safetensors',
-    'DreamFul v3.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/DreamFul%20v3.safetensors',
-    'Dreamlike Photoreal 2.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Dreamlike%20Photoreal%202.safetensors',
-    'DreamShaper 8.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/DreamShaper%208.safetensors',
-    'Edge Of Realism v2.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Edge%20Of%20Realism%20v2.safetensors',
-    'Epic Diffusion v1.1.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Epic%20Diffusion%20v1.1.safetensors',
-    'epiCRealism v4.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/epiCRealism%20v4.safetensors',
-    'Experience 8.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Experience%208.safetensors',
-    'GhostMix v2.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/GhostMix%20v2.safetensors',
-    'HARDblend.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/HARDblend.safetensors',
-    'Hassaku v1.3.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Hassaku%20v1.3.safetensors',
-    'HassanBlend v1.5.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/HassanBlend%20v1.5.safetensors',
-    'Henmix Real v4.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Henmix%20Real%20v4.safetensors',
-    'ICBINP v8.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/ICBINP%20v8.safetensors',
-    'Juggernaut Aftermath.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Juggernaut%20Aftermath.safetensors',
-    'Level4 v5.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Level4%20v5.safetensors',
-    'Liberty.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Liberty.safetensors',
-    'Life Like Diffusion v2.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Life%20Like%20Diffusion%20v2.safetensors',
-    'LOFI v3.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/LOFI%20v3.safetensors',
-    'majicMIX realistic v2.5.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/majicMIX%20realistic%20v2.5.safetensors',
-    'MeinaMix v11.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/MeinaMix%20v11.safetensors',
-    'NeverEnding Dream v1.22.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/NeverEnding%20Dream%20v1.22.safetensors',
-    'Perfect World v5.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Perfect%20World%20v5.safetensors',
-    'Photon v1.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Photon%20v1.safetensors',
-    'Protogen x3.4.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Protogen%20x3.4.safetensors',
-    'RealCartoon3D v5.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/RealCartoon3D%20v5.safetensors',
-    'Realisian v5.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Realisian%20v5.safetensors',
-    'Realistic Vision v5.1.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Realistic%20Vision%20v5.1.safetensors',
-    'Reliberate v1.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Reliberate%20v1.safetensors',
-    'ReV Animated v.1.2.2.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/ReV%20Animated%20v.1.2.2.safetensors',
-    'RPG v5.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/RPG%20v5.safetensors',
-    'Stable Diffusion v1.5.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Stable%20Diffusion%20v1.5.safetensors',
-    'Stable Diffusion v2.1.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Stable%20Diffusion%20v2.1.safetensors',
-    'Stable Diffusion XL.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/Stable%20Diffusion%20XL.safetensors',
-    'SunshineMix＆SunlightMix.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/SunshineMix%EF%BC%86SunlightMix.safetensors',
-    'VinteProtogenMix v2.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/VinteProtogenMix%20v2.safetensors',
-    'XXMix 9realistic v4.safetensors':'https://huggingface.co/romisyed/sd/resolve/main/XXMix%209realistic%20v4.safetensors',
-
-
-}
 
 options_templates.update(options_section(('sd', "Stable Diffusion"), {
     "sd_model_checkpoint": OptionInfo(None, "Stable Diffusion checkpoint", gr.Dropdown, lambda: {"choices": list(_provided_checkpoints.keys())}, refresh=refresh_checkpoints),

@@ -111,4 +111,6 @@ parser.add_argument('--add-stop-route', action='store_true', help='add /_stop ro
 parser.add_argument('--api-server-stop', action='store_true', help='enable server stop/restart/kill via api')
 parser.add_argument('--timeout-keep-alive', type=int, default=30, help='set timeout_keep_alive for uvicorn')
 parser.add_argument("--unique-id", type=str, help="Unique identifier for who is launching the webui")
+parser.add_argument("--exclude", action='store_true', help="remove xl model in list of models")
+
 
