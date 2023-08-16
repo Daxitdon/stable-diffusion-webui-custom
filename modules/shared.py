@@ -40,6 +40,7 @@ if cmd_opts.unique_id is not None:
     print(f"Unique ID: {cmd_opts.unique_id}")
     os.environ['UNIQUE_ID'] = cmd_opts.unique_id
 
+print("cmd_opts exclude",cmd_opts.exclude)
 
 
 
