@@ -65,7 +65,6 @@ other_models = {
     'AnyHentai v2.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/AnyHentai%20v2.safetensors',
     'AnyLoRA.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/AnyLoRA.safetensors',
     'Anything v5.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Anything%20v5.safetensors',
-    'Babes 2.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Babes%202.safetensors',
     'Beautiful Realistic Asians v6.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Beautiful%20Realistic%20Asians%20v6.safetensors',
     'CetusMix Whalefall 2.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/CetusMix%20Whalefall%202.safetensors',
     'Cheese Daddy Landscapes Mix v4.1.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Cheese%20Daddy%20Landscapes%20Mix%20v4.1.safetensors',
