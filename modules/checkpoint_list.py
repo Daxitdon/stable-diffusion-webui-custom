@@ -116,4 +116,4 @@ other_models = {
 
 }
 
-_provided_checkpoints = fast_models if cmd_opts.exclude is not None else other_models
+_provided_checkpoints = fast_models if cmd_opts.exclude else other_models
