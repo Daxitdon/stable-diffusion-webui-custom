@@ -201,6 +201,9 @@ def select_checkpoint():
         print("checkpoint info not in list", checkpoint_info)
         if checkpoint_info is not None:
             return checkpoint_info
+        else:
+            checkpoint_info = next(iter(checkpoints_list.values()))
+            return checkpoint_info
     elif model_checkpoint is None:
         print("model checkpoint is none")
         checkpoint_info = next(iter(checkpoints_list.values()))
