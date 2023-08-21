@@ -32,8 +32,6 @@ fast_models = {
     'HappyDiffusionFX.safetensors' : 'https://huggingface.co/romisyed/sd/resolve/main/HappyDiffusionFX.safetensors',
     'HARDblend.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/HARDblend.safetensors',
     'Hassaku v1.3.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Hassaku%20v1.3.safetensors',
-    'HassanBlend v1.5.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/HassanBlend%20v1.5.safetensors',
-    'Henmix Real v4.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Henmix%20Real%20v4.safetensors',
     'ICBINP v8.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/ICBINP%20v8.safetensors',
     'Juggernaut Aftermath.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Juggernaut%20Aftermath.safetensors',
     'Level4 v5.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Level4%20v5.safetensors',
@@ -50,11 +48,9 @@ fast_models = {
     'Realisian v5.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Realisian%20v5.safetensors',
     'Realistic Vision v5.1.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Realistic%20Vision%20v5.1.safetensors',
     'Reliberate v1.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Reliberate%20v1.safetensors',
-    'ReV Animated v.1.2.2.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/ReV%20Animated%20v.1.2.2.safetensors',
     'RPG v5.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/RPG%20v5.safetensors',
     'Stable Diffusion v1.5.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Stable%20Diffusion%20v1.5.safetensors',
     'SunshineMix＆SunlightMix.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/SunshineMix%EF%BC%86SunlightMix.safetensors',
-    'VinteProtogenMix v2.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/VinteProtogenMix%20v2.safetensors',
     'XXMix 9realistic v4.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/XXMix%209realistic%20v4.safetensors',
 
 }
@@ -88,8 +84,6 @@ other_models = {
     'HappyDiffusionFX.safetensors' : 'https://huggingface.co/romisyed/sd/resolve/main/HappyDiffusionFX.safetensors',
     'HARDblend.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/HARDblend.safetensors',
     'Hassaku v1.3.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Hassaku%20v1.3.safetensors',
-    'HassanBlend v1.5.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/HassanBlend%20v1.5.safetensors',
-    'Henmix Real v4.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Henmix%20Real%20v4.safetensors',
     'ICBINP v8.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/ICBINP%20v8.safetensors',
     'Juggernaut Aftermath.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Juggernaut%20Aftermath.safetensors',
     'Level4 v5.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Level4%20v5.safetensors',
@@ -106,13 +100,9 @@ other_models = {
     'Realisian v5.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Realisian%20v5.safetensors',
     'Realistic Vision v5.1.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Realistic%20Vision%20v5.1.safetensors',
     'Reliberate v1.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Reliberate%20v1.safetensors',
-    'ReV Animated v.1.2.2.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/ReV%20Animated%20v.1.2.2.safetensors',
     'RPG v5.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/RPG%20v5.safetensors',
     'Stable Diffusion v1.5.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Stable%20Diffusion%20v1.5.safetensors',
-    'Stable Diffusion v2.1.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Stable%20Diffusion%20v2.1.safetensors',
-    'Stable Diffusion XL.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Stable%20Diffusion%20XL.safetensors',
     'SunshineMix＆SunlightMix.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/SunshineMix%EF%BC%86SunlightMix.safetensors',
-    'VinteProtogenMix v2.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/VinteProtogenMix%20v2.safetensors',
     'XXMix 9realistic v4.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/XXMix%209realistic%20v4.safetensors',
 
 }
