@@ -56,7 +56,9 @@ fast_models = {
     'RPG v5.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/RPG%20v5.safetensors',
     'Stable Diffusion v1.5.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Stable%20Diffusion%20v1.5.safetensors',
     'Stable Diffusion v2.1.safetensors': 'https://huggingface.co/romisyed/sdnew/resolve/main/Stable%20Diffusion%20v2.1.safetensors',
+    'Stable Diffusion XL v1.safetensors':'https://huggingface.co/romisyed/sdnew/resolve/main/Stable%20Diffusion%20XL%20v1.safetensors',
     'SunshineMix＆SunlightMix.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/SunshineMix%EF%BC%86SunlightMix.safetensors',
+    'UniverseStable v5.safetensors': 'https://huggingface.co/romisyed/sdnew/resolve/main/UniverseStable%20v5.safetensors',
     'XXMix 9realistic v4.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/XXMix%209realistic%20v4.safetensors',
 
 }
@@ -114,7 +116,9 @@ other_models = {
     'RPG v5.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/RPG%20v5.safetensors',
     'Stable Diffusion v1.5.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/Stable%20Diffusion%20v1.5.safetensors',
     'Stable Diffusion v2.1.safetensors':'https://huggingface.co/romisyed/sdnew/resolve/main/Stable%20Diffusion%20v2.1.safetensors',
+    'Stable Diffusion XL v1.safetensors': 'https://huggingface.co/romisyed/sdnew/resolve/main/Stable%20Diffusion%20XL%20v1.safetensors',
     'SunshineMix＆SunlightMix.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/SunshineMix%EF%BC%86SunlightMix.safetensors',
+    'UniverseStable v5.safetensors':'https://huggingface.co/romisyed/sdnew/resolve/main/UniverseStable%20v5.safetensors',
     'XXMix 9realistic v4.safetensors': 'https://huggingface.co/romisyed/sd/resolve/main/XXMix%209realistic%20v4.safetensors',
 
 }
