@@ -105,14 +105,14 @@ def setup_model():
     enable_midas_autodownload()
 
 
-def checkpoint_tiles():
-    def convert(name):
-        return int(name) if name.isdigit() else name.lower()
-
-    def alphanumeric_key(key):
-        return [convert(c) for c in re.split('([0-9]+)', key)]
-
-    return sorted([x.title for x in checkpoints_list.values()], key=alphanumeric_key)
+# def checkpoint_tiles():
+#     def convert(name):
+#         return int(name) if name.isdigit() else name.lower()
+#
+#     def alphanumeric_key(key):
+#         return [convert(c) for c in re.split('([0-9]+)', key)]
+#
+#     return sorted([x.title for x in checkpoints_list.values()], key=alphanumeric_key)
 
 
 def checkpoint_titles():
