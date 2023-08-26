@@ -115,6 +115,20 @@ def checkpoint_tiles():
     return sorted([x.title for x in checkpoints_list.values()], key=alphanumeric_key)
 
 
+def checkpoint_titles():
+    def convert(name):
+        return int(name) if name.isdigit() else name.lower()
+
+    def alphanumeric_key(key):
+        return [convert(c) for c in re.split('([0-9]+)', key)]
+
+    provided_checkpoints_keys = list(_provided_checkpoints.keys())
+
+    checkpoint_titles = [x.title for x in checkpoints_list.values() if x.title not in provided_checkpoints_keys]
+
+    return sorted(provided_checkpoints_keys + checkpoint_titles, key=alphanumeric_key)
+
+
 def list_models():
     pass
     global is_downloading
