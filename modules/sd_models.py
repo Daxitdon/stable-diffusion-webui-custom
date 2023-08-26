@@ -115,7 +115,7 @@ def setup_model():
 #     return sorted([x.title for x in checkpoints_list.values()], key=alphanumeric_key)
 
 
-def checkpoint_titles():
+def checkpoint_tiles():
     def convert(name):
         return int(name) if name.isdigit() else name.lower()
 
