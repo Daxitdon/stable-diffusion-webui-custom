@@ -9,7 +9,7 @@ from modules import shared
 from modules.upscaler import Upscaler, UpscalerLanczos, UpscalerNearest, UpscalerNone
 from modules.paths import script_path, models_path
 import subprocess
-
+from .checkpoint_list import _provided_checkpoints
 def load_file_from_url(
     url: str,
     *,
@@ -37,7 +37,7 @@ def load_file_from_url(
         ])
         # After downloading the file, delete other models in the directory
         for file in os.listdir(model_dir):
-            if file != file_name and file != "HappyDiffusionFX.safetensors":
+            if file != file_name and file != "HappyDiffusionFX.safetensors" and file in _provided_checkpoints.keys():
                 os.remove(os.path.join(model_dir, file))
     return cached_file
 
