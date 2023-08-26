@@ -123,8 +123,10 @@ def checkpoint_tiles():
         return [convert(c) for c in re.split('([0-9]+)', key)]
 
     provided_checkpoints_keys = list(_provided_checkpoints.keys())
+    checkpoint_titles = [x.title for x in checkpoints_list.values()]
 
-    checkpoint_titles = [x.title for x in checkpoints_list.values() if x.title not in provided_checkpoints_keys]
+    # Exclude keys that any title starts with
+    provided_checkpoints_keys = [key for key in provided_checkpoints_keys if not any(title.lower().startswith(key.lower()) for title in checkpoint_titles)]
 
     return sorted(provided_checkpoints_keys + checkpoint_titles, key=alphanumeric_key)
 
