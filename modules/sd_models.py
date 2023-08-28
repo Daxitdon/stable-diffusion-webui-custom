@@ -144,7 +144,7 @@ def list_models():
         if shared.cmd_opts.no_download_sd_model or cmd_ckpt != shared.sd_model_file or os.path.exists(cmd_ckpt):
             model_url = None
         else:
-            model_url = "https://huggingface.co/romisyed/sd/resolve/main/HappyDiffusionFX.safetensors"
+            model_url = "https://huggingface.co/romisyed/sdnew/resolve/main/HappyDiffusionFX.safetensors"
 
         model_list = modelloader.load_models(model_path=model_path, model_url=model_url,
                                              command_path=shared.cmd_opts.ckpt_dir, ext_filter=[".ckpt", ".safetensors"],
